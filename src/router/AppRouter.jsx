@@ -6,8 +6,8 @@ export const AppRouter = () => {
   return (
     <Routes>
       <Route path="/" element={<RedditPage />} />
-      <Route path="/hot" element={<NewPage />} />
-      <Route path="/new" element={<HotPage />} />
+      <Route path="/hot" element={<HotPage />} />
+      <Route path="/new" element={<NewPage />} />
       <Route path="/rising" element={<RisingPage />} />
     </Routes>
   );

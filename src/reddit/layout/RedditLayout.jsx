@@ -2,7 +2,7 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 
 // material-ui
-import { Box, Toolbar } from "@mui/material";
+import { Box, Grid, Toolbar } from "@mui/material";
 
 // project imports
 import { Navbar, Sidebar } from "../components";
@@ -41,10 +41,13 @@ const RedditLayout = ({ children }) => {
         handleDrawerClose={handleDrawerClose}
       />
 
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <Box component="main" p={3}>
         <Toolbar />
-
-        {children}
+        <Grid container p={1}>
+          <Grid item xs={12}>
+            {children}
+          </Grid>
+        </Grid>
       </Box>
     </Box>
   );
