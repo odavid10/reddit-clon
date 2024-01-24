@@ -3,7 +3,7 @@ export const parseData = (data) => {
 
   for (const subreddit of data) {
     const { data } = subreddit;
-    console.log("subreddit", data);
+
     outputArray.push({
       id: data.id,
       author: data.author,
