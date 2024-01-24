@@ -15,24 +15,33 @@ import {
 import MailIcon from "@mui/icons-material/Mail";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 
-const drawer = (
-  <>
-    <Toolbar />
-    <Divider />
-    <List>
-      {["Inbox", "Starred", "Send email"].map((text, index) => (
-        <ListItem key={text} disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItemButton>
-        </ListItem>
-      ))}
-    </List>
-  </>
-);
+// third-party
+import { useNavigate } from "react-router-dom";
+
+const MyDrawer = ({ onClick }) => {
+  return (
+    <>
+      <Toolbar />
+      <Divider />
+      <List>
+        {["Hot", "New", "Rising"].map((text, index) => (
+          <ListItem key={text} disablePadding onClick={onClick(text)}>
+            <ListItemButton>
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </>
+  );
+};
+
+MyDrawer.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
 
 export const Sidebar = ({
   drawerWidth,
@@ -40,6 +49,12 @@ export const Sidebar = ({
   handleDrawerTransitionEnd,
   handleDrawerClose,
 }) => {
+  const navigate = useNavigate();
+
+  const handleNavigate = (page) => () => {
+    navigate(`/${page}`);
+  };
+
   return (
     <Box
       component="nav"
@@ -63,7 +78,7 @@ export const Sidebar = ({
           },
         }}
       >
-        {drawer}
+        <MyDrawer onClick={handleNavigate} />
       </Drawer>
       <Drawer
         variant="permanent"
@@ -76,7 +91,7 @@ export const Sidebar = ({
         }}
         open
       >
-        {drawer}
+        <MyDrawer onClick={handleNavigate} />
       </Drawer>
     </Box>
   );
@@ -84,7 +99,7 @@ export const Sidebar = ({
 
 Sidebar.propTypes = {
   drawerWidth: PropTypes.number.isRequired,
-  mobileOpen: PropTypes.func.isRequired,
+  mobileOpen: PropTypes.bool.isRequired,
   handleDrawerTransitionEnd: PropTypes.func.isRequired,
   handleDrawerClose: PropTypes.func.isRequired,
 };
