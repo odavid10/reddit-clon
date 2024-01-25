@@ -1,11 +1,29 @@
 import PropTypes from "prop-types";
+import { useContext } from "react";
 
 // material-ui
-import { AppBar, IconButton, Toolbar, Typography } from "@mui/material";
-
+import Brightness4Icon from "@mui/icons-material/Brightness4";
 import MenuIcon from "@mui/icons-material/Menu";
+import NightlightIcon from "@mui/icons-material/Nightlight";
+import {
+  AppBar,
+  FormControlLabel,
+  FormGroup,
+  Grid,
+  IconButton,
+  Switch,
+  Toolbar,
+  Typography,
+  useTheme,
+} from "@mui/material";
+
+// project imports
+import { ColorModeContext } from "../../theme/AppTheme";
 
 export const Navbar = ({ drawerWidth, handleDrawerToggle }) => {
+  const theme = useTheme();
+  const colorMode = useContext(ColorModeContext);
+
   return (
     <AppBar
       position="fixed"
@@ -15,23 +33,53 @@ export const Navbar = ({ drawerWidth, handleDrawerToggle }) => {
       }}
     >
       <Toolbar>
-        <IconButton
-          color="inherit"
-          aria-label="open drawer"
-          edge="start"
-          onClick={handleDrawerToggle}
-          sx={{ mr: 2, display: { sm: "none" } }}
+        <Grid
+          container
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
         >
-          <MenuIcon />
-        </IconButton>
-        <Typography
-          variant="h6"
-          noWrap
-          component="div"
-          sx={{ display: { sm: "none" } }}
-        >
-          Reddit
-        </Typography>
+          <Grid item xs={10} sm={11} display={"flex"} alignItems="center">
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ mr: 2, display: { sm: "none" } }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ display: { sm: "none" } }}
+            >
+              Reddit
+            </Typography>
+          </Grid>
+          <Grid item xs={2} sm={1}>
+            <FormGroup>
+              <FormControlLabel
+                control={
+                  <Switch
+                    checked={theme.palette.mode === "dark"}
+                    onChange={colorMode.toggleColorMode}
+                    name="gilad"
+                    color="success"
+                  />
+                }
+                label={
+                  theme.palette.mode === "dark" ? (
+                    <NightlightIcon />
+                  ) : (
+                    <Brightness4Icon />
+                  )
+                }
+              />
+            </FormGroup>
+          </Grid>
+        </Grid>
       </Toolbar>
     </AppBar>
   );

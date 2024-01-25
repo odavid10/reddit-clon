@@ -20,14 +20,14 @@ export const Post = ({ subreddit }) => {
           </Avatar>
         }
         title={
-          <Typography variant="h6" color="initial">
+          <Typography variant="h6">
             <a
               href={`https://www.reddit.com${subreddit.permalink}`}
               target="_blank"
               rel="noreferrer"
               style={{
                 cursor: "pointer",
-                color: "#000",
+                color: "inherit",
                 textDecorationLine: "none",
               }}
             >
@@ -42,7 +42,7 @@ export const Post = ({ subreddit }) => {
               href={`https://www.reddit.com/user/${subreddit.author}`}
               target="_blank"
               rel="noreferrer"
-              style={{ cursor: "pointer", color: "#000" }}
+              style={{ cursor: "pointer", color: "inherit" }}
             >
               {subreddit.author}
             </a>
