@@ -12,7 +12,7 @@ import {
 
 export const Post = ({ subreddit }) => {
   return (
-    <Card sx={{ maxWidth: 500, marginBottom: 5 }}>
+    <Card sx={{ maxWidth: { xs: 300, sm: 400, md: 500 }, marginBottom: 5 }}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: "red" }} aria-label="recipe">

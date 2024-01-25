@@ -39,7 +39,14 @@ export const Navbar = ({ drawerWidth, handleDrawerToggle }) => {
           justifyContent="space-between"
           alignItems="center"
         >
-          <Grid item xs={10} sm={11} display={"flex"} alignItems="center">
+          <Grid
+            item
+            xs={9}
+            sm={10}
+            md={11}
+            display={"flex"}
+            alignItems="center"
+          >
             <IconButton
               color="inherit"
               aria-label="open drawer"
@@ -58,7 +65,7 @@ export const Navbar = ({ drawerWidth, handleDrawerToggle }) => {
               Reddit
             </Typography>
           </Grid>
-          <Grid item xs={2} sm={1}>
+          <Grid item xs={3} sm={2} md={1}>
             <FormGroup>
               <FormControlLabel
                 control={
