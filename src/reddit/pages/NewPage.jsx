@@ -17,7 +17,7 @@ export const NewPage = () => {
   return (
     <RedditLayout>
       {isLoading ? (
-        <CircularProgress color="inherit" />
+        <CircularProgress color="primary" />
       ) : (
         <>
           <TextField

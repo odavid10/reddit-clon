@@ -14,7 +14,7 @@ export const RedditPage = () => {
   return (
     <RedditLayout>
       {isLoading ? (
-        <CircularProgress color="inherit" />
+        <CircularProgress color="primary" />
       ) : (
         <RedditView data={reddits} />
       )}
