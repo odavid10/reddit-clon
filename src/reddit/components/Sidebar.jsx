@@ -13,11 +13,25 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import MailIcon from "@mui/icons-material/Mail";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
+import NewspaperIcon from "@mui/icons-material/Newspaper";
+import WhatshotIcon from "@mui/icons-material/Whatshot";
+import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 
 // third-party
 import { useNavigate } from "react-router-dom";
+
+const getIcon = (text) => {
+  switch (text) {
+    case "Hot":
+      return <WhatshotIcon />;
+    case "New":
+      return <NewspaperIcon />;
+    case "Rising":
+      return <TrendingUpIcon />;
+    default:
+      return <NewspaperIcon />;
+  }
+};
 
 const MyDrawer = ({ onClick }) => {
   return (
@@ -29,12 +43,10 @@ const MyDrawer = ({ onClick }) => {
       </Toolbar>
       <Divider />
       <List>
-        {["Hot", "New", "Rising"].map((text, index) => (
+        {["Hot", "New", "Rising"].map((text) => (
           <ListItem key={text} disablePadding onClick={onClick(text)}>
             <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
+              <ListItemIcon>{getIcon(text)}</ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
           </ListItem>
