@@ -19,7 +19,7 @@ export const Post = ({ subreddit }) => {
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: "red" }} aria-label="recipe">
-            R
+            {subreddit.author.charAt(0)}
           </Avatar>
         }
         title={
