@@ -17,20 +17,25 @@ import {
   useTheme,
 } from "@mui/material";
 
+// third-party
+import { useNavigate } from "react-router-dom";
+
 // project imports
 import { ColorModeContext } from "../../theme/AppTheme";
 
-export const Navbar = ({ drawerWidth, handleDrawerToggle }) => {
+export const Navbar = ({ handleDrawerToggle }) => {
   const theme = useTheme();
   const colorMode = useContext(ColorModeContext);
+  const navigate = useNavigate();
+
+  const onClick = () => {
+    navigate("/");
+  };
 
   return (
     <AppBar
       position="fixed"
-      sx={{
-        width: { sm: `calc(100% - ${drawerWidth}px)` },
-        ml: { sm: `${drawerWidth}px` },
-      }}
+      sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
     >
       <Toolbar>
         <Grid
@@ -60,13 +65,19 @@ export const Navbar = ({ drawerWidth, handleDrawerToggle }) => {
               variant="h6"
               noWrap
               component="div"
-              sx={{ display: { sm: "none" } }}
+              onClick={onClick}
+              sx={{ cursor: "pointer" }}
             >
               Reddit
             </Typography>
           </Grid>
           <Grid item xs={3} sm={2} md={1}>
-            <FormGroup>
+            <FormGroup
+              sx={{
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
               <FormControlLabel
                 control={
                   <Switch
@@ -83,6 +94,7 @@ export const Navbar = ({ drawerWidth, handleDrawerToggle }) => {
                     <Brightness4Icon />
                   )
                 }
+                sx={{ ml: 0 }}
               />
             </FormGroup>
           </Grid>

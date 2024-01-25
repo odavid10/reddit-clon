@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 // material-ui
@@ -12,6 +12,27 @@ const drawerWidth = 240;
 const RedditLayout = ({ children }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const isXsSize = window.innerWidth <= 600;
+
+      setMobileOpen((prevMobileOpen) => {
+        if (isXsSize && prevMobileOpen) {
+          return false;
+        }
+        return prevMobileOpen;
+      });
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const handleDrawerClose = () => {
     setIsClosing(true);
