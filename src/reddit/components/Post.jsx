@@ -25,7 +25,11 @@ export const Post = ({ subreddit }) => {
               href={`https://www.reddit.com${subreddit.permalink}`}
               target="_blank"
               rel="noreferrer"
-              style={{ cursor: "pointer", color: "#000" }}
+              style={{
+                cursor: "pointer",
+                color: "#000",
+                textDecorationLine: "none",
+              }}
             >
               {subreddit.title}
             </a>

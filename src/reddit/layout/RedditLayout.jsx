@@ -41,7 +41,7 @@ const RedditLayout = ({ children }) => {
         handleDrawerClose={handleDrawerClose}
       />
 
-      <Box component="main" p={3}>
+      <Box component="main" p={3} mx="auto">
         <Toolbar />
         {children}
       </Box>
