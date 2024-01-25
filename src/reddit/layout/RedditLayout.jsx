@@ -2,7 +2,7 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 
 // material-ui
-import { Box, Grid, Toolbar } from "@mui/material";
+import { Box, Toolbar } from "@mui/material";
 
 // project imports
 import { Navbar, Sidebar } from "../components";
@@ -43,11 +43,7 @@ const RedditLayout = ({ children }) => {
 
       <Box component="main" p={3}>
         <Toolbar />
-        <Grid container p={1}>
-          <Grid item xs={12}>
-            {children}
-          </Grid>
-        </Grid>
+        {children}
       </Box>
     </Box>
   );

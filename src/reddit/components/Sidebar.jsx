@@ -11,6 +11,7 @@ import {
   ListItemIcon,
   ListItemText,
   Toolbar,
+  Typography,
 } from "@mui/material";
 import MailIcon from "@mui/icons-material/Mail";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
@@ -21,7 +22,11 @@ import { useNavigate } from "react-router-dom";
 const MyDrawer = ({ onClick }) => {
   return (
     <>
-      <Toolbar />
+      <Toolbar>
+        <Typography onClick={onClick("")} sx={{ cursor: "pointer" }}>
+          Reddit
+        </Typography>
+      </Toolbar>
       <Divider />
       <List>
         {["Hot", "New", "Rising"].map((text, index) => (
