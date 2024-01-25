@@ -17,13 +17,22 @@ export const redditsApi = createApi({
       query: (limit = 5) => `/best?limit=${limit}`,
     }),
     getHots: builder.query({
-      query: (subreddit = "apple") => `/r/${subreddit}/hot?limit=5`,
+      query: (subreddit) =>
+        subreddit === ""
+          ? `/r/apple/hot?limit=5`
+          : `/r/${subreddit}/hot?limit=5`,
     }),
     getNews: builder.query({
-      query: (subreddit = "sony") => `/r/${subreddit}/new?limit=5`,
+      query: (subreddit) =>
+        subreddit === ""
+          ? `/r/sony/new?limit=5`
+          : `/r/${subreddit}/new?limit=5`,
     }),
     getRisings: builder.query({
-      query: (subreddit = "amazon") => `/r/${subreddit}/rising?limit=5`,
+      query: (subreddit) =>
+        subreddit === ""
+          ? `/r/amazon/rising?limit=5`
+          : `/r/${subreddit}/rising?limit=5`,
     }),
   }),
 });
