@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 import { HotPage, NewPage, RedditPage, RisingPage } from "../reddit/pages";
 
@@ -9,6 +9,7 @@ export const AppRouter = () => {
       <Route path="/hot" element={<HotPage />} />
       <Route path="/new" element={<NewPage />} />
       <Route path="/rising" element={<RisingPage />} />
+      <Route path="/*" element={<Navigate to="/" />} />
     </Routes>
   );
 };

@@ -30,7 +30,7 @@ export const Navbar = ({ drawerWidth, handleDrawerToggle }) => {
           component="div"
           sx={{ display: { sm: "none" } }}
         >
-          Responsive drawer
+          Reddit
         </Typography>
       </Toolbar>
     </AppBar>
