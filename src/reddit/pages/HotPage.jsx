@@ -1,5 +1,7 @@
+import { useState } from "react";
+
 // material-ui
-import { CircularProgress } from "@mui/material";
+import { CircularProgress, TextField } from "@mui/material";
 
 // project imports
 import RedditLayout from "../layout/RedditLayout";
@@ -8,7 +10,8 @@ import { parseData } from "../../helpers";
 import { useGetHotsQuery } from "../../store/apis/redditsApi";
 
 export const HotPage = () => {
-  const { data, isLoading } = useGetHotsQuery();
+  const [searchValue, setSearchValue] = useState();
+  const { data, isLoading } = useGetHotsQuery(searchValue);
   const reddits = parseData(data?.data.children || []);
 
   return (
@@ -16,7 +19,17 @@ export const HotPage = () => {
       {isLoading ? (
         <CircularProgress color="inherit" />
       ) : (
-        <RedditView data={reddits} />
+        <>
+          <TextField
+            fullWidth
+            id="search"
+            label="search"
+            value={searchValue}
+            onChange={({ target }) => setSearchValue(target.value)}
+            sx={{ marginBottom: 5 }}
+          />
+          <RedditView data={reddits} />
+        </>
       )}
     </RedditLayout>
   );

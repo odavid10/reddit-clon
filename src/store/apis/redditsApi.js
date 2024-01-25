@@ -20,10 +20,10 @@ export const redditsApi = createApi({
       query: (subreddit = "apple") => `/r/${subreddit}/hot?limit=5`,
     }),
     getNews: builder.query({
-      query: (subreddit = "apple") => `/r/${subreddit}/new?limit=5`,
+      query: (subreddit = "sony") => `/r/${subreddit}/new?limit=5`,
     }),
     getRisings: builder.query({
-      query: (subreddit = "apple") => `/r/${subreddit}/rising?limit=5`,
+      query: (subreddit = "amazon") => `/r/${subreddit}/rising?limit=5`,
     }),
   }),
 });

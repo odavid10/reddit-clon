@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 
+// project imports
 import { Post } from "../components";
 
 export const RedditView = ({ data = [] }) => {

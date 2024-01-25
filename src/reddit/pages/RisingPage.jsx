@@ -1,5 +1,7 @@
+import { useState } from "react";
+
 // material-ui
-import { CircularProgress } from "@mui/material";
+import { CircularProgress, TextField } from "@mui/material";
 
 // project imports
 import RedditLayout from "../layout/RedditLayout";
@@ -8,6 +10,7 @@ import { RedditView } from "../views";
 import { useGetRisingsQuery } from "../../store/apis/redditsApi";
 
 export const RisingPage = () => {
+  const [searchValue, setSearchValue] = useState();
   const { data, isLoading } = useGetRisingsQuery();
   const reddits = parseData(data?.data.children || []);
 
@@ -16,7 +19,17 @@ export const RisingPage = () => {
       {isLoading ? (
         <CircularProgress color="inherit" />
       ) : (
-        <RedditView data={reddits} />
+        <>
+          <TextField
+            fullWidth
+            id="search"
+            label="search"
+            value={searchValue}
+            onChange={({ target }) => setSearchValue(target.value)}
+            sx={{ marginBottom: 5 }}
+          />
+          <RedditView data={reddits} />
+        </>
       )}
     </RedditLayout>
   );
