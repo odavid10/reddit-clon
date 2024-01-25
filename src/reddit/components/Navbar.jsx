@@ -24,7 +24,12 @@ export const Navbar = ({ drawerWidth, handleDrawerToggle }) => {
         >
           <MenuIcon />
         </IconButton>
-        <Typography variant="h6" noWrap component="div">
+        <Typography
+          variant="h6"
+          noWrap
+          component="div"
+          sx={{ display: { sm: "none" } }}
+        >
           Responsive drawer
         </Typography>
       </Toolbar>
