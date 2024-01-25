@@ -19,6 +19,7 @@ import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 
 // third-party
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const getIcon = (text) => {
   switch (text) {
@@ -34,6 +35,14 @@ const getIcon = (text) => {
 };
 
 const MyDrawer = ({ onClick }) => {
+  const { t } = useTranslation();
+
+  const sections = {
+    Hot: t("Hot"),
+    New: t("New"),
+    Rising: t("Rising"),
+  };
+
   return (
     <>
       <Toolbar>
@@ -49,11 +58,11 @@ const MyDrawer = ({ onClick }) => {
       </Toolbar>
       <Divider />
       <List>
-        {["Hot", "New", "Rising"].map((text) => (
+        {Object.keys(sections).map((text) => (
           <ListItem key={text} disablePadding onClick={onClick(text)}>
             <ListItemButton>
               <ListItemIcon>{getIcon(text)}</ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={sections[text]} />
             </ListItemButton>
           </ListItem>
         ))}
