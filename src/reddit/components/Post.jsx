@@ -47,12 +47,14 @@ export const Post = ({ subreddit }) => {
       />
       <CardMedia
         component="img"
-        width={subreddit.thumbnail_width}
-        height={subreddit.thumbnail_height}
-        image={subreddit.thumbnail}
+        image={
+          subreddit.thumbnail !== "self"
+            ? subreddit.thumbnail
+            : "https://placehold.co/500x260"
+        }
         alt={subreddit.title}
       />
-      <CardContent />
+      <CardContent>{subreddit?.text}</CardContent>
     </Card>
   );
 };

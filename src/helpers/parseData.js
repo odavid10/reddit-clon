@@ -18,6 +18,7 @@ export const parseData = (data) => {
       thumbnail_width: data.thumbnail_width,
       title: data.title,
       url: data.url,
+      text: data.selftext,
     });
   }
 
