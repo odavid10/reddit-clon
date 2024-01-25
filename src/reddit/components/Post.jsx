@@ -10,6 +10,9 @@ import {
   Typography,
 } from "@mui/material";
 
+// project imports
+import { IMG_PLACEHOLDER_URL, REDDIT_URL } from "../../enviroment";
+
 export const Post = ({ subreddit }) => {
   return (
     <Card sx={{ maxWidth: { xs: 300, sm: 400, md: 500 }, marginBottom: 5 }}>
@@ -22,7 +25,7 @@ export const Post = ({ subreddit }) => {
         title={
           <Typography variant="h6">
             <a
-              href={`https://www.reddit.com${subreddit.permalink}`}
+              href={`${REDDIT_URL}${subreddit.permalink}`}
               target="_blank"
               rel="noreferrer"
               style={{
@@ -39,7 +42,7 @@ export const Post = ({ subreddit }) => {
           <Typography>
             {subreddit.subreddit_name_prefixed}{" "}
             <a
-              href={`https://www.reddit.com/user/${subreddit.author}`}
+              href={`${REDDIT_URL}/user/${subreddit.author}`}
               target="_blank"
               rel="noreferrer"
               style={{ cursor: "pointer", color: "inherit" }}
@@ -54,7 +57,7 @@ export const Post = ({ subreddit }) => {
         image={
           subreddit.thumbnail !== "self"
             ? subreddit.thumbnail
-            : "https://placehold.co/500x260"
+            : IMG_PLACEHOLDER_URL
         }
         alt={subreddit.title}
       />
